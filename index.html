@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Mobile-portfolio by b3lz3but</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Mobile-portfolio</h1>
+        <h2>front-end nanodegree project</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/b3lz3but/mobile-portfolio/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/b3lz3but/mobile-portfolio/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/b3lz3but/mobile-portfolio" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h2>
+<a id="running-instructions" class="anchor" href="#running-instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running Instructions</h2>
+
+<ol>
+<li>
+<p>To inspect the site on your phone, you can run a local server</p>
+
+<div class="highlight highlight-source-shell"><pre>$<span class="pl-k">&gt;</span> <span class="pl-c1">cd</span> /path/to/your-project-folder
+$<span class="pl-k">&gt;</span> python -m SimpleHTTPServer 8080</pre></div>
+</li>
+<li><p>Open a browser and visit localhost:8080</p></li>
+<li>
+<p>Download and install <a href="https://ngrok.com/">ngrok</a> to make your local server accessible remotely.</p>
+
+<div class="highlight highlight-source-shell"><pre>$<span class="pl-k">&gt;</span> <span class="pl-c1">cd</span> /path/to/your-project-folder
+$<span class="pl-k">&gt;</span> ngrok http 8080</pre></div>
+</li>
+<li><p>Copy the public URL ngrok gives you and try running it through PageSpeed Insights! <a href="http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/">More on integrating ngrok, Grunt and PageSpeed.</a></p></li>
+</ol>
+
+<h3>
+<a id="part-1-optimize-pagespeed-insights-score-for-indexhtml" class="anchor" href="#part-1-optimize-pagespeed-insights-score-for-indexhtml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Part 1: Optimize PageSpeed Insights score for index.html</h3>
+
+<h4>
+<a id="what-needs-to-be-done" class="anchor" href="#what-needs-to-be-done" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What needs to be done?</h4>
+
+<ol>
+<li>Identify and perform optimizations to achieve a PageSpeed score above 90 on index.html.</li>
+</ol>
+
+<h4>
+<a id="what-did-i-do" class="anchor" href="#what-did-i-do" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What did I do?</h4>
+
+<ol>
+<li>Prevented render blocking JS by making analytics.js async.</li>
+<li>Prevented render blocking CSS by using media type "print" to print.css.</li>
+<li>Set Google Fonts to load directly using <a href="https://github.com/font-face" class="user-mention">@font-face</a>.</li>
+<li>Used grunt-uncss plugin to remove unused css from style.css.</li>
+<li>Minifed style.css using grunt-contrib-cssmin plugin.</li>
+<li>Optimized style.css delivery by making it to inline CSS in index.html.</li>
+<li>Copied pizzeria.jpg to pizzeria100w.jpg and changed its width to 100px.</li>
+<li>Optimized pizzeria 100w.jpg and profilepic.jpg using the online tool <a href="http://optimizilla.com/">Optimizilla</a>.</li>
+<li>Minified perfmatters.js using grunt-contrib-uglify plugin.</li>
+<li>Minified index.html using grunt-contrib-htmlmin plugin.</li>
+</ol>
+
+<h4>
+<a id="references" class="anchor" href="#references" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>References:</h4>
+
+<ol>
+<li><a href="https://www.udacity.com/course/website-performance-optimization--ud884-nd">Website Performance Optimization Course</a></li>
+<li><a href="https://coderwall.com/p/5vrdkg/google-fonts-using-fontface-in-your-css">Google Fonts using @fontface in your .css</a></li>
+<li><a href="http://stackoverflow.com/questions/25011533/google-font-api-uses-browser-detection-how-to-get-all-font-variations-for-font">How to get all font variations for font-face</a></li>
+</ol>
+
+<h3>
+<a id="part-2-optimize-frames-per-second-in-pizzahtml" class="anchor" href="#part-2-optimize-frames-per-second-in-pizzahtml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Part 2: Optimize Frames per Second in pizza.html</h3>
+
+<h4>
+<a id="what-needs-to-be-done-1" class="anchor" href="#what-needs-to-be-done-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What needs to be done?</h4>
+
+<ol>
+<li>Time to resize pizzas is less than 5ms in pizza.html shown in the browser console.</li>
+<li>Identify and perform optimizations ensuring a consistent frame rate at 60fps when scrolling in pizza.html.</li>
+</ol>
+
+<h4>
+<a id="what-did-i-do-1" class="anchor" href="#what-did-i-do-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What did I do?</h4>
+
+<ol>
+<li>Optimized pizza.png and pizzeria.jpg using the online tool <a href="http://optimizilla.com/">Optimizilla</a>.</li>
+<li>Used grunt-uncss plugin to remove unused css from style.css and bootstrap-grid.css (after this I realized that .mover was removed so I had to add it manually) and moved everything to style.css.</li>
+</ol>
+
+<h4>
+<a id="for-the-pizza-resize-part" class="anchor" href="#for-the-pizza-resize-part" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>For the Pizza Resize Part:</h4>
+
+<ol>
+<li>Found that determineDx, changePizzaSizes and resizePizzas functions in main.js were making FSL.</li>
+<li>Removed determineDx function, moved sizeSwitcher logic inside changePizzaSizes and used percentages instead of pixels.</li>
+<li>Created variables to accomplish DRY.</li>
+<li>Moved variables outside loops to prevent constant calling or creation.</li>
+</ol>
+
+<h4>
+<a id="for-the-60-fps-on-scroll" class="anchor" href="#for-the-60-fps-on-scroll" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>For the 60 FPS on Scroll:</h4>
+
+<ol>
+<li>Found that updatePositions functions was making FSL.</li>
+<li>Created a new variable named scrolledTop that handles document.body.scrollTop outside the "for" loop for preventing to be called each time.</li>
+<li>Set var phase outside the "for" loop to prevent variable creation each time.</li>
+<li>FSL was gone :) but still having FPS below 60.</li>
+<li>Realized there was a lot of Painting so, decided to put will-change: transform on the .mover class (because it handles the pizza.png images on the background), job done.</li>
+<li>Created variables to hold the length outside "for" loops.</li>
+<li>Reduced the number of pizzas to be shown based on the browser's height.</li>
+<li>Moved var elem outside the loop, to prevent constant creation.</li>
+<li>Minifed style.css using grunt-contrib-cssmin plugin.</li>
+<li>Optimized style.css delivery by making it to inline CSS in pizza.html.</li>
+<li>Minified main.js to main.min.js using grunt-contrib-uglify plugin.</li>
+<li>Minified pizza.html using grunt-contrib-htmlmin plugin.</li>
+</ol>
+
+<h4>
+<a id="other-mainjs-tasks" class="anchor" href="#other-mainjs-tasks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other main.js tasks:</h4>
+
+<ol>
+<li>Changed querySelectorAll to getElementsByClassName due to its speed.</li>
+<li>Changed querySelector to getElementById due to its speed.</li>
+</ol>
+
+<h3>
+<a id="other-notes" class="anchor" href="#other-notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other notes:</h3>
+
+<ol>
+<li>Inside the main.js file you can find more details of what I did.</li>
+</ol>
+
+<h4>
+<a id="references-1" class="anchor" href="#references-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>References:</h4>
+
+<ol>
+<li><a href="https://www.udacity.com/course/browser-rendering-optimization--ud860-nd">Browser Rendering Optimization Course</a></li>
+<li><a href="https://jsperf.com/getelementsbyclassname-vs-queryselectorall/18">getElementsByClassName VS querySelectorAll</a></li>
+<li><a href="https://jsperf.com/getelementbyid-vs-queryselector/11">getElementById vs. querySelector</a></li>
+</ol>
+
+<h4>
+<a id="other-references-in-general" class="anchor" href="#other-references-in-general" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other References in General:</h4>
+
+<ol>
+<li><a href="https://www.youtube.com/watch?v=zfzUH9Keu1s&amp;list=PLpP9FLMkNf55_LqrPuSUxcs84bMvQiPD8">Grunt Tutorial</a></li>
+</ol>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
